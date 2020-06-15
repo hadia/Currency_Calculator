@@ -14,8 +14,8 @@ import com.hadia.task.CurrencyCalculator.utils.Status
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var mainViewModel: MainViewModel
-    private lateinit var adapter: MainAdapter
+    private lateinit var currencyRatesListViewModel: CurrencyRatesListViewModel
+    private lateinit var adapter: CurrencyRatesAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupUI() {
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = MainAdapter(arrayListOf(),{it->
+        adapter = CurrencyRatesAdapter(arrayListOf(),{ it->
 
         })
         recyclerView.addItemDecoration(
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObserver() {
-        mainViewModel.getCurrencyList().observe(this, Observer {
+        currencyRatesListViewModel.getCurrencyList().observe(this, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
                     progressBar.visibility = View.GONE
@@ -66,9 +66,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
 
-        mainViewModel = ViewModelProvider(
+        currencyRatesListViewModel = ViewModelProvider(
             this,
             ViewModelFactory()
-        ).get(MainViewModel::class.java)
+        ).get(CurrencyRatesListViewModel::class.java)
     }
 }

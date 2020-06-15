@@ -10,10 +10,10 @@ import com.hadia.task.CurrencyCalculator.utils.extension.loadFromUrl
 import kotlinx.android.synthetic.main.currency_list_item.view.*
 
 
-class MainAdapter(
+class CurrencyRatesAdapter(
     private var rates: List<RateData>,
     private val listener: (RateData) -> Unit
-) : RecyclerView.Adapter<MainAdapter.DataViewHolder>() {
+) : RecyclerView.Adapter<CurrencyRatesAdapter.DataViewHolder>() {
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(rateData: RateData) = with(itemView) {

@@ -9,7 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class MainViewModel(private val mainRepository: IMainRepository) : ViewModel() {
+class CurrencyRatesListViewModel(private val mainRepository: IMainRepository) : ViewModel() {
 
     private val currencyList = MutableLiveData<Resource<List<RateData>>>()
     private val compositeDisposable = CompositeDisposable()
