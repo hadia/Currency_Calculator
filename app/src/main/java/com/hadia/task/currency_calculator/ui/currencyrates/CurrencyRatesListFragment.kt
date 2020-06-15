@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,7 +19,10 @@ import kotlinx.android.synthetic.main.fragment_currency_rates_list.*
 
 
 class CurrencyRatesListFragment : Fragment() {
-    private lateinit var currencyRatesListViewModel: CurrencyRatesListViewModel
+    private val currencyRatesListViewModel by viewModels<CurrencyRatesListViewModel> {
+        ViewModelFactory()
+    }
+
     private lateinit var listAdapter: CurrencyRatesListAdapter
 
     override fun onCreateView(
@@ -33,7 +36,6 @@ class CurrencyRatesListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupUI()
-        setupViewModel()
         setupObserver()
     }
 
@@ -45,8 +47,10 @@ class CurrencyRatesListFragment : Fragment() {
                 arrayListOf()
             ) { view, rateData ->
                 Navigation.findNavController(view)
-                    .navigate(CurrencyRatesListFragmentDirections
-                        .actionCurrencyRatesListFragmentToCurrencyCalculator(rateData))
+                    .navigate(
+                        CurrencyRatesListFragmentDirections
+                            .actionCurrencyRatesListFragmentToCurrencyCalculator(rateData)
+                    )
             }
         recyclerView.addItemDecoration(
             DividerItemDecoration(
@@ -81,13 +85,5 @@ class CurrencyRatesListFragment : Fragment() {
     private fun renderList(rates: List<RateData>) {
         listAdapter.updateData(rates)
         listAdapter.notifyDataSetChanged()
-    }
-
-    private fun setupViewModel() {
-
-        currencyRatesListViewModel = ViewModelProvider(
-            this,
-            ViewModelFactory()
-        ).get(CurrencyRatesListViewModel::class.java)
     }
 }

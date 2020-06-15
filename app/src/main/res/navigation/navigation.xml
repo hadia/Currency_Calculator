@@ -19,6 +19,6 @@
         tools:layout="@layout/currency_calculator_fragment" >
         <argument
             android:name="rateData"
-            app:argType="com.hadia.task.CurrencyCalculator.ui.currencyrates.RateData" />
+            app:argType="com.hadia.task.currency_calculator.ui.currencyrates.RateData" />
     </fragment>
 </navigation>

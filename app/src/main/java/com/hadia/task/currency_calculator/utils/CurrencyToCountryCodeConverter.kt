@@ -27,7 +27,7 @@ class CurrencyToCountryCodeConverter() {
 
             val countryCodeCurrencyMapType = object : TypeToken<HashMap<String, String>>() {}.type
 
-            var countryCodeCurrencyMap: HashMap<String, String> =
+            val countryCodeCurrencyMap: HashMap<String, String> =
                 Gson().fromJson(jsonFileString, countryCodeCurrencyMapType)
             return countryCodeCurrencyMap.get(currency)
         }

@@ -5,18 +5,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.hadia.task.currency_calculator.data.api.ApiHelper
 import com.hadia.task.currency_calculator.data.repository.MainRepository
 import com.hadia.task.currency_calculator.ui.currencyrates.CurrencyRatesListViewModel
-import com.hadia.task.currency_calculator.ui.details.CurrencyCalculatorViewModel
 
+@Suppress("UNCHECKED_CAST")
 class ViewModelFactory : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
 
         if (modelClass.isAssignableFrom(CurrencyRatesListViewModel::class.java)) {
-            return CurrencyRatesListViewModel(
-                MainRepository(ApiHelper())
-            ) as T
-        }else if (modelClass.isAssignableFrom(CurrencyCalculatorViewModel::class.java)){
-            return CurrencyCalculatorViewModel() as T
+            return CurrencyRatesListViewModel(MainRepository(ApiHelper())) as T
         }
         throw IllegalArgumentException("Unknown class name")
     }
