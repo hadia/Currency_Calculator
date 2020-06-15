@@ -1,13 +1,10 @@
-package com.hadia.task.CurrencyCalculator.ui.viewmodel
+package com.hadia.task.CurrencyCalculator.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.blongho.country_data.World
-import com.hadia.task.CurrencyCalculator.ui.RateData
 import com.hadia.task.CurrencyCalculator.utils.Resource
 import com.hadia.task.CurrencyCalculator.repository.IMainRepository
-import com.hadia.task.CurrencyCalculator.utils.currenciesSymbolsMap
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

@@ -9,8 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hadia.task.CurrencyCalculator.R
-import com.hadia.task.CurrencyCalculator.ui.adapter.MainAdapter
-import com.hadia.task.CurrencyCalculator.ui.viewmodel.MainViewModel
 import com.hadia.task.CurrencyCalculator.ui.base.ViewModelFactory
 import com.hadia.task.CurrencyCalculator.utils.Status
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,7 +26,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupUI() {
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = MainAdapter(arrayListOf())
+        adapter = MainAdapter(arrayListOf(),{it->
+
+        })
         recyclerView.addItemDecoration(
             DividerItemDecoration(
                 recyclerView.context,

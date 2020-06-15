@@ -2,9 +2,9 @@ package com.hadia.task.CurrencyCalculator.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.hadia.task.CurrencyCalculator.ui.viewmodel.MainViewModel
 import com.hadia.task.CurrencyCalculator.data.api.ApiHelper
 import com.hadia.task.CurrencyCalculator.repository.MainRepository
+import com.hadia.task.CurrencyCalculator.ui.MainViewModel
 
 class ViewModelFactory : ViewModelProvider.Factory {
 
