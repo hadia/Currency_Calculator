@@ -33,7 +33,7 @@ class CurrencyCalculatorFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(CurrencyCalculatorViewModel::class.java)
         rateData = CurrencyCalculatorFragmentArgs
             .fromBundle(requireArguments()).rateData
-        
+        currency_title.text = "From EUR to " + rateData.currency
         selected_currency_tv.text =rateData.currency
         selected_currency_rate_tv.text ="%.4f".format(rateData.amount)
         base_currency_rate_et.addTextChangedListener(object : TextWatcher{

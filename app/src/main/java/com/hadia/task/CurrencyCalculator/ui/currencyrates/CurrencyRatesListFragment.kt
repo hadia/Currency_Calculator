@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hadia.task.CurrencyCalculator.R
 import com.hadia.task.CurrencyCalculator.ui.base.ViewModelFactory
 import com.hadia.task.CurrencyCalculator.utils.Status
+import com.hadia.task.CurrencyCalculator.utils.extension.loadFromUrl
+import kotlinx.android.synthetic.main.currency_list_item.view.*
 import kotlinx.android.synthetic.main.fragment_currency_rates_list.*
 
 
@@ -37,6 +39,7 @@ class CurrencyRatesListFragment : Fragment() {
     }
 
     private fun setupUI() {
+        currency_Iv.loadFromUrl("https://www.countryflags.io/EU/flat/16.png")
         recyclerView.layoutManager = LinearLayoutManager(context)
         listAdapter =
             CurrencyRatesListAdapter(
