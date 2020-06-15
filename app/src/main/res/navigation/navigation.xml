@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/currencyRatesListFragment">
+
+    <fragment
+        android:id="@+id/currencyRatesListFragment"
+        android:name="com.hadia.task.CurrencyCalculator.ui.currencyrates.CurrencyRatesListFragment"
+        tools:layout="@layout/fragment_currency_rates_list" >
+        <action
+            android:id="@+id/action_currencyRatesListFragment_to_currencyCalculator"
+            app:destination="@id/currencyCalculator" />
+    </fragment>
+    <fragment
+        android:id="@+id/currencyCalculator"
+        android:name="com.hadia.task.CurrencyCalculator.ui.details.CurrencyCalculatorFragment"
+        tools:layout="@layout/currency_calculator_fragment" >
+        <argument
+            android:name="rateData"
+            app:argType="com.hadia.task.CurrencyCalculator.ui.currencyrates.RateData" />
+    </fragment>
+</navigation>
