@@ -41,7 +41,7 @@ class CurrencyRatesListViewModelTest {
     }
     @Test
     fun `Given currencyList then update live data`() {
-        val currencyList = CurrencyList(true,1,"","",HashMap<String,Double>())
+        val currencyList = CurrencyList(true,1,"","",HashMap())
 
         `when`(mockDataRepository.currencyList)
             .thenReturn(Single.just(currencyList))

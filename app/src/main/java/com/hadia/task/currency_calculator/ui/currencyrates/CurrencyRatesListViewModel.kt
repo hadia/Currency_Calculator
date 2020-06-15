@@ -25,10 +25,10 @@ class CurrencyRatesListViewModel(private val mainRepository: IMainRepository) : 
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ userList ->
-                    currencyList.postValue(Resource.success(userList.rates.map { it ->
+                    currencyList.postValue(Resource.success(userList.rates.map { rate ->
                         RateData(
-                            it.key,
-                            it.value
+                            rate.key,
+                            rate.value
                         )
                     }))
                 }, {

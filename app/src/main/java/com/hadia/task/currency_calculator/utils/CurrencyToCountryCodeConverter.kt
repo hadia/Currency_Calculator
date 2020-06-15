@@ -6,7 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
 
-class CurrencyToCountryCodeConverter() {
+class CurrencyToCountryCodeConverter{
     companion object {
         private fun getJsonDataFromCurrencyAsset(context: Context): String? {
             val jsonString: String
@@ -29,7 +29,7 @@ class CurrencyToCountryCodeConverter() {
 
             val countryCodeCurrencyMap: HashMap<String, String> =
                 Gson().fromJson(jsonFileString, countryCodeCurrencyMapType)
-            return countryCodeCurrencyMap.get(currency)
+            return countryCodeCurrencyMap[currency]
         }
     }
 }

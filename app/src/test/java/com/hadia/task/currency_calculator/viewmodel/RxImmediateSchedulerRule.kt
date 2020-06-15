@@ -24,7 +24,7 @@ class RxImmediateSchedulerRule : TestRule {
         }
 
         @NonNull
-        override fun createWorker(): Scheduler.Worker {
+        override fun createWorker(): Worker {
             return ExecutorScheduler.ExecutorWorker(Executor { it.run() })
         }
     }
