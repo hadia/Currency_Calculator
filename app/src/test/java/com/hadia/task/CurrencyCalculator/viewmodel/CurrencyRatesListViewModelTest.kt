@@ -4,8 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.hadia.task.CurrencyCalculator.data.model.CurrencyList
 import com.hadia.task.CurrencyCalculator.repository.IMainRepository
-import com.hadia.task.CurrencyCalculator.ui.CurrencyRatesListViewModel
-import com.hadia.task.CurrencyCalculator.ui.RateData
+import com.hadia.task.CurrencyCalculator.ui.currencyrates.CurrencyRatesListViewModel
+import com.hadia.task.CurrencyCalculator.ui.currencyrates.RateData
 import com.hadia.task.CurrencyCalculator.utils.Resource
 import io.reactivex.Single
 import org.junit.Assert
@@ -46,7 +46,10 @@ class CurrencyRatesListViewModelTest {
         `when`(mockDataRepository.currencyList)
             .thenReturn(Single.just(currencyList))
 
-        currencyRatesListModel = CurrencyRatesListViewModel(mockDataRepository)
+        currencyRatesListModel =
+            CurrencyRatesListViewModel(
+                mockDataRepository
+            )
         currencyRatesListModel.getCurrencyList()
         //Check that our live data is updated
         Assert.assertTrue(currencyRatesListModel.getCurrencyList().value?.data.isNullOrEmpty())
@@ -57,7 +60,10 @@ class CurrencyRatesListViewModelTest {
         `when`(mockDataRepository.currencyList)
             .thenReturn(Single.error(Throwable()))
 
-        currencyRatesListModel = CurrencyRatesListViewModel(mockDataRepository)
+        currencyRatesListModel =
+            CurrencyRatesListViewModel(
+                mockDataRepository
+            )
         currencyRatesListModel.getCurrencyList().observeForever(mockLiveDataObserver)
         currencyRatesListModel.getCurrencyList()
         //Check that our live data is updated
