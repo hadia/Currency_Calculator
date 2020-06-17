@@ -1,5 +1,8 @@
 package com.hadia.task.currency_calculator.data.api
 
+import android.os.Build
+import com.hadia.task.currency_calculator.BuildConfig
+
 class ApiHelper {
     private val ratesApi by lazy {
         ServiceBuilder.buildService(
@@ -7,5 +10,5 @@ class ApiHelper {
         )
     }
 
-    fun getCurrencies() = ratesApi.getCurrencies()
+    fun getCurrencies() = ratesApi.getCurrencies(BuildConfig.API_KEY)
 }
