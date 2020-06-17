@@ -1,49 +1,33 @@
 package com.hadia.task.currency_calculator.ui.currencyrates
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.hadia.task.currency_calculator.data.model.CurrencyList
 import com.hadia.task.currency_calculator.data.repository.IMainRepository
 import com.hadia.task.currency_calculator.utils.Resource
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.*
 
-class CurrencyRatesListViewModel(private val mainRepository: IMainRepository) : ViewModel() {
+class CurrencyRatesListViewModel(private val mainRepository: IMainRepository,private val dispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel() {
 
-    private val currencyList = MutableLiveData<Resource<List<RateData>>>()
-    private val compositeDisposable = CompositeDisposable()
 
-    init {
-        fetchCurrenisesList()
-    }
+     var currencyList = liveData (dispatcher){
+         emit( Resource.loading(null))
 
-    private fun fetchCurrenisesList() {
-        currencyList.postValue(Resource.loading(null))
-        compositeDisposable.add(
-            mainRepository.currencyList
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ currencyRateList ->
-                    currencyList.postValue(Resource.success(currencyRateList.rates.map { rate ->
-                        RateData(
-                            rate.key,
-                            rate.value
-                        )
-                    }))
-                }, {
-                    currencyList.postValue(Resource.error("Something Went Wrong", null))
-                })
-        )
-    }
+         try {
+             val  currencyRateList=mainRepository.getCurrencyList()
+         emit(Resource.success(currencyRateList.rates.map { rate ->
+             RateData(
+                 rate.key,
+                 rate.value
+             )
+         }))
+         } catch (exception: Exception) {
+            emit(Resource.error("Something Went Wrong", null))
+         }
 
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.dispose()
-    }
+     }
 
-    fun getCurrencyList(): LiveData<Resource<List<RateData>>> {
-        return currencyList
-    }
+
+
 
 }

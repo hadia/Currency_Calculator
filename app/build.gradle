@@ -49,6 +49,9 @@ dependencies {
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "androidx.arch.core:core-testing:$rootProject.archTestingVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.kotlinxCoroutinesTestVersion"
+    testImplementation 'com.github.marcinOz:TestCoroutineRule:1.0.1'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
     // UI Testing
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
@@ -68,10 +71,19 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit2Version"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit2Version"
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okkHttpVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofit2Version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${rootProject.retrofit2Version}"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment:2.2.2"
     implementation "androidx.navigation:navigation-ui:2.2.2"
+    //Kotlin Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0'
+    implementation group: 'androidx.lifecycle', name:'lifecycle-viewmodel-ktx', version: '2.3.0-alpha04'
+
+    // alternatively - just LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    // lib for lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
 }

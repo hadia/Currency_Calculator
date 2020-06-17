@@ -7,5 +7,5 @@ class ApiHelper {
         )
     }
 
-    fun getCurrencies() = ratesApi.getCurrencies()
+    suspend fun getCurrencies() = ratesApi.getCurrencies()
 }

@@ -62,7 +62,7 @@ class CurrencyRatesListFragment : Fragment() {
     }
 
     private fun setupObserver() {
-        currencyRatesListViewModel.getCurrencyList().observe(viewLifecycleOwner, Observer {
+        currencyRatesListViewModel.currencyList.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
                     progressBar.visibility = View.GONE

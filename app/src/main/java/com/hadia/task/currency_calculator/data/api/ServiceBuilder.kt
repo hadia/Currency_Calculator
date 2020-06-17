@@ -11,7 +11,6 @@ object ServiceBuilder {
     private val retrofit = Retrofit.Builder()
         .baseUrl("http://data.fixer.io/")
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .client(client)
         .build()
 
