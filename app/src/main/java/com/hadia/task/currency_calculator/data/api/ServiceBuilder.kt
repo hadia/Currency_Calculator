@@ -7,9 +7,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceBuilder {
     private val client = OkHttpClient.Builder().build()
+    private const val BASE_URL = "http://data.fixer.io/"
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://data.fixer.io/")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
